@@ -1,0 +1,6 @@
+com\ecommerce\tools\inventoryservice\config\KafkaConfig.class
+com\ecommerce\tools\inventoryservice\api\InventoryController$InventoryResponse.class
+com\ecommerce\tools\inventoryservice\service\StockService.class
+com\ecommerce\tools\inventoryservice\api\InventoryController.class
+com\ecommerce\tools\inventoryservice\messaging\InventoryEventListener.class
+com\ecommerce\tools\inventoryservice\InventoryServiceApplication.class

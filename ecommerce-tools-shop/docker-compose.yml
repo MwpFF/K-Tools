@@ -1,0 +1,79 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    ports: ["2181:2181"]
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    depends_on: [zookeeper]
+    ports: ["9092:9092", "29092:29092"]
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_HOST://kafka:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ecommerce_tools
+      POSTGRES_USER: tools_user
+      POSTGRES_PASSWORD: tools_pass
+    ports: ["5432:5432"]
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tools_user -d ecommerce_tools"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend-service:
+    build:
+      context: .
+      dockerfile: order-service/Dockerfile
+    ports: ["18080:8080"]  # 8080 на хосте занят → используйте http://localhost:18080 для прямого доступа к API
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ecommerce_tools
+      SPRING_DATASOURCE_USERNAME: tools_user
+      SPRING_DATASOURCE_PASSWORD: tools_pass
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+
+  inventory-service:
+    build:
+      context: .
+      dockerfile: inventory-service/Dockerfile
+    ports: ["8081:8081"]
+    depends_on: [kafka]
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+
+  notification-service:
+    build:
+      context: .
+      dockerfile: notification-service/Dockerfile
+    ports: ["8082:8082"]
+    depends_on: [kafka]
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports: ["80:80"]
+    depends_on:
+      - backend-service
+
+volumes:
+  postgres_data:

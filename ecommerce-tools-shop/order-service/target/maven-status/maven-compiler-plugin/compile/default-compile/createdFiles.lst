@@ -1,0 +1,10 @@
+com\ecommerce\tools\orderservice\domain\Order.class
+com\ecommerce\tools\orderservice\api\OrderController.class
+com\ecommerce\tools\orderservice\config\KafkaConfig.class
+com\ecommerce\tools\orderservice\OrderServiceApplication.class
+com\ecommerce\tools\orderservice\messaging\OrderEventListener.class
+com\ecommerce\tools\orderservice\repository\OrderRepository.class
+com\ecommerce\tools\orderservice\domain\OrderStatus.class
+com\ecommerce\tools\orderservice\api\OrderDto.class
+com\ecommerce\tools\orderservice\service\OrderService.class
+com\ecommerce\tools\orderservice\api\CreateOrderRequest.class

@@ -1,0 +1,5 @@
+com\ecommerce\tools\notificationservice\api\NotificationController$NotificationStatsResponse.class
+com\ecommerce\tools\notificationservice\service\NotificationStatsService.class
+com\ecommerce\tools\notificationservice\NotificationServiceApplication.class
+com\ecommerce\tools\notificationservice\messaging\NotificationEventListener.class
+com\ecommerce\tools\notificationservice\api\NotificationController.class

@@ -1,0 +1,10 @@
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\api\CreateOrderRequest.java
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\api\OrderController.java
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\api\OrderDto.java
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\config\KafkaConfig.java
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\domain\Order.java
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\domain\OrderStatus.java
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\messaging\OrderEventListener.java
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\OrderServiceApplication.java
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\repository\OrderRepository.java
+C:\Users\demok\OneDrive\Рабочий стол\K-Tools\ecommerce-tools-shop\order-service\src\main\java\com\ecommerce\tools\orderservice\service\OrderService.java
