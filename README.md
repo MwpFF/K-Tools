@@ -171,11 +171,10 @@ curl http://localhost:18080/api/v1/orders/1
 
 ## Технологии 
 
-- Backend: Spring Boot 3.3.5, Java 21, Maven, Spring Web, Spring Data JPA, Spring Kafka, Validation  
+- Backend: Spring Boot 3.3.5, Java 21
 - DB: PostgreSQL 16  
-- Messaging: Kafka (Confluent images 7.5.0) + ZooKeeper  
+- Messaging: Kafka 
 - Frontend: React 18 + Vite, React Router, Tailwind CSS  
-- Reverse proxy: Nginx (в Docker‑образе фронта)  
-- DevOps: Docker Compose, Kubernetes манифесты в `k8s/` (Minikube)
+- DevOps: Docker Compose
 
 ---
